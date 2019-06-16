@@ -50,8 +50,8 @@ function setBgGreet(){
         document.body.style.backgroundImage='url("./img/earlymorning.jpg")';
         //fix font colour and background clash issue
         let timecontainer = document.getElementsByClassName('timecontainer')[0];
-        timecontainer.style.backgroundColor = 'rgba(255,255,255,.5)';
-        timecontainer.style.color = 'black';
+        timecontainer.style.backgroundColor = 'rgba(0,0,0,.5)';
+        timecontainer.style.color = 'white';
         timecontainer.style.padding = '5px';
         timecontainer.style.borderRadius = '10px';
     } else if(hour<12){
@@ -84,15 +84,15 @@ function getName() {
     }
 }
 
-//get goal of the user
-function getGoal() {
-    let storagegoal = localStorage.getItem('goal');
-    if (storagegoal===null) {
-        goal.textContent = '[Enter Goal]';
-    } else {
-        goal.textContent = storagegoal;
-    }
-}
+// //get goal of the user
+// function getGoal() {
+//     let storagegoal = localStorage.getItem('goal');
+//     if (storagegoal===null) {
+//         goal.textContent = '[Enter Goal]';
+//     } else {
+//         goal.textContent = storagegoal;
+//     }
+// }
 //set name of user on change
 function setName(e){
     if(e.type==='keypress'){
@@ -106,27 +106,27 @@ function setName(e){
     }
 }
 
-//set goal of user on change
-function setGoal(e) {
-    if (e.type === 'keypress') {
-        //enter is pressed
-        if (e.which == 13 || e.keyCode == 13) {
-            localStorage.setItem('goal', e.target.innerText);
-        }
-    } else {
-        localStorage.setItem('goal', e.target.innerText);
-    }
-}
+// //set goal of user on change
+// function setGoal(e) {
+//     if (e.type === 'keypress') {
+//         //enter is pressed
+//         if (e.which == 13 || e.keyCode == 13) {
+//             localStorage.setItem('goal', e.target.innerText);
+//         }
+//     } else {
+//         localStorage.setItem('goal', e.target.innerText);
+//     }
+// }
 
 // document,addEventListener()
 //add event listener for changes in editable content
 name.addEventListener('keypress',setName);
 name.addEventListener('blur', setName);
-goal.addEventListener('keypress', setGoal);
-goal.addEventListener('blur', setGoal);
+// goal.addEventListener('keypress', setGoal);
+// goal.addEventListener('blur', setGoal);
 //calls
 setTime();
 setDate();
 setBgGreet();
 getName();
-getGoal();
+// getGoal();

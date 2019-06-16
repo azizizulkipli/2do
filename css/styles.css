@@ -32,7 +32,7 @@ body{
     border-radius: 10px;
 }
 .margins{
-    padding: 10px;
+    margin: 10px;
 }
 #time{
     font-size: 3rem;
@@ -42,15 +42,85 @@ body{
     font-size: 1.5rem;
     width: inherit;
 }
-
-#goal{
-    font-size: 1.5rem;
+#todo{
+    background-color:none;
+    border-radius: 10px;
+    width: calc(100% - 20px);
+    display: flex;
+    height: 30px;
 }
+#todo input{
+    flex:7;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    outline: none;
+    box-shadow: none;
+    text-indent: 15px;
+    border-radius: 10px;
+    color: black;
+    font-family: 'Quicksand',sans-serif;
+    font-size: 1rem;
+}
+#todo input::placeholder{
+    color: black;
+    font-family: 'Quicksand',sans-serif;
+}
+#todo button{
+    flex:1;
+    margin-left: 10px;
+    height:30px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-color: rgba(0, 108, 255, .7);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+}
+#incomplete{
+    width: calc(100% - 20px);
+}
+#incomplete ul{
+    list-style-type: none;
+}
+#incomplete ul li{
+    width: inherit;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    height:30px;
+}
+#incomplete ul li:last-child{
+    margin-bottom: 10px;
+}
+#complete {
+    width: calc(100% - 20px);
+}
+
+#complete ul {
+    list-style-type: none;
+}
+
+#complete ul li {
+    width: inherit;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    height: 30px;
+}
+
+#complete ul li:last-child {
+    margin-bottom: 10px;
+}
+
 @media(max-width:855px){
     .timecontainer, .content {
         display: block;
         position: unset;
         transform: none;
+    }
+    .timecontainer{
+        margin-bottom: 10px;
     }
     body{
         display:flex;
