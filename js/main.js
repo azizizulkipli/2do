@@ -48,7 +48,12 @@ function setBgGreet(){
         //early morning
         greeting.textContent = 'Good Morning,';
         document.body.style.backgroundImage='url("./img/earlymorning.jpg")';
-  
+        //fix font colour and background clash issue
+        let timecontainer=document.getElementsByClassName('timecontainer')[0];
+        timecontainer.style.backgroundColor='rgba(255,255,255,.5)';
+        timecontainer.style.color='black';
+        timecontainer.style.padding='5px';
+        timecontainer.style.borderRadius='10px';
     } else if(hour<12){
         //morning
         greeting.textContent = 'Good Morning,';
@@ -66,6 +71,7 @@ function setBgGreet(){
         greeting.textContent = 'Good Evening,';
         document.body.style.backgroundImage = 'url("./img/night.jpg")';
     }
+    setInterval(setBgGreet, 60000);
 }
 
 //get name of the user
