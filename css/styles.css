@@ -76,40 +76,59 @@ body{
     border-radius: 10px;
     color: #fff;
     font-size: 1rem;
+    cursor: pointer;
 }
+
 #incomplete{
     width: calc(100% - 20px);
-}
-#incomplete ul{
     list-style-type: none;
 }
-#incomplete ul li{
-    width: inherit;
+#incomplete:empty {
+    margin: 0 0 10px 0;
+}
+#incomplete li{
     background-color: white;
     border-radius: 10px;
     margin-bottom: 5px;
     height:30px;
+    line-height: 30px;
+    padding-right: 10px;
+    font-size: 1rem;
 }
-#incomplete ul li:last-child{
+#incomplete li:last-child{
     margin-bottom: 10px;
 }
+
 #complete {
+    list-style: none;
     width: calc(100% - 20px);
 }
-
-#complete ul {
-    list-style-type: none;
+#complete:empty{
+    margin: 0;
+}
+#complete:not(:empty){
+    opacity: 0.7;
+}
+ul#complete:not(:empty)::before{
+    content: '';
+    width: 150px;
+    height: 1px;
+    position: absolute;
+    margin: -15px 0 0 -75px;
+    background-color: rgba(66, 66, 66, 0.5);
 }
 
-#complete ul li {
-    width: inherit;
+#complete li {
     background-color: white;
     border-radius: 10px;
     margin-bottom: 5px;
     height: 30px;
+    line-height: 30px;
+    padding-right: 10px;
+    font-size: 1rem;
 }
 
-#complete ul li:last-child {
+#complete li:last-child {
     margin-bottom: 10px;
 }
 
