@@ -62,8 +62,8 @@ function setBgGreet(){
         document.body.style.backgroundImage='url("./img/earlymorning.jpg")';
         //fix font colour and background clash issue
         let timecontainer = document.getElementsByClassName('timecontainer')[0];
-        timecontainer.style.backgroundColor = 'rgba(0,0,0,.5)';
-        timecontainer.style.color = 'white';
+        timecontainer.style.backgroundColor = 'rgba(255,255,255,.50)';
+        timecontainer.style.color = 'black';
         timecontainer.style.padding = '5px';
         timecontainer.style.borderRadius = '10px';
     } else if(hour<12){
