@@ -99,6 +99,11 @@ body{
 #incomplete ul:empty {
     margin: 0 0 10px 0;
 }
+#incomplete ul:empty::after{
+    content: 'You have nothing to do!';
+    font-weight: 600;
+    font-family: 'Open Sans',sans-serif;
+}
 #incomplete ul li{
     background-color: white;
     border-radius: 10px;
@@ -184,14 +189,20 @@ body{
 #complete ul:empty {
     margin: 0;
 }
+#complete ul:empty::after {
+    content: "There's nothing to complete";
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+}
 #complete:not(:empty){
     opacity: 0.7;
 }
-#complete ul:not(:empty)::before{
+#complete ul::before{
     content: '';
     width: 150px;
     height: 1px;
     position: absolute;
+    left: 50%;
     margin: -15px 0 0 -75px;
     background-color: rgba(66, 66, 66, 0.5);
 }
@@ -288,7 +299,7 @@ body{
     #time{
         font-size: 4rem;
     }
-    #complete ul:not(:empty)::before {
+    #complete ul::before {
        margin: -5px 0 0 -75px;
     }
 }
