@@ -86,9 +86,6 @@ body{
     fill: #c0cecb;
     transition: 0.2s fill ease;
 }
-.noFill{
-    fill: none;
-}
 /* Incomplete List Boxes */
 
 #incomplete{
@@ -158,8 +155,11 @@ body{
 #incomplete li .buttons button.done:hover svg .filldone{
     fill: #fff;
 }
+#incomplete li .buttons button.done svg{
+    background-color: none;
+}
 #incomplete li .buttons button.done:hover svg {
-    background: rgba(0, 108, 255, 1);
+    background-color: rgba(0, 108, 255, 1);
 }
 
 /* Complete List Boxes */
