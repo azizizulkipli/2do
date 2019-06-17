@@ -3,7 +3,11 @@ const time=document.getElementById('time'),
     day = document.getElementById('day'),
     greeting = document.getElementById('greeting'),
     name = document.getElementById('name'),
-    goal = document.getElementById('goal');
+    task= document.getElementById('task'),
+    addBtn = document.getElementById('addtask'),
+    removeBtn = document.getElementsByClassName('remove')[0],
+    doneBtn = document.getElementsByClassName('done')[0];
+
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 //TO DO: make a switch for this
@@ -17,7 +21,7 @@ function setTime(){
         seconds=today.getSeconds();
     
     const amPm = hours >= 12? 'PM' : 'AM';
-    hours = hours > 12 ? hours % 12 : hours;
+    hours = hours > 12 ? hours % 12 : hours==0?hours=12:hours;
     time.innerHTML = `${hours}<span>:</span>${correctTime(minutes)}<span>:</span>${correctTime(seconds)} <span>${setAmPm(amPm)}</span>`;
     setTimeout(setTime,1000);
 }
@@ -124,6 +128,13 @@ name.addEventListener('keypress',setName);
 name.addEventListener('blur', setName);
 // goal.addEventListener('keypress', setGoal);
 // goal.addEventListener('blur', setGoal);
+
+// CONTINUE FROM HERE=========================================
+task.addEventListener('keypress',addTask);
+addBtn.addEventListener('click', addTask);
+
+
+
 //calls
 setTime();
 setDate();

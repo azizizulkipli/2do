@@ -30,6 +30,8 @@ body{
     transform: translate(-50%,-50%);
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
+    margin: 0 10px;
+    max-width: 500px;
 }
 .margins{
     margin: 10px;
@@ -101,21 +103,24 @@ body{
     background-color: white;
     border-radius: 10px;
     margin-bottom: 5px;
-    height:30px;
+    min-height: 30px;
+    width: 100%;
     line-height: 30px;
     padding-left: 10px;
     font-size: 1rem;
     position: relative;
     text-align: left;
+    padding-right: 65px;
+    word-break: break-word;
 }
 #incomplete li:last-child{
     margin-bottom: 10px;
 }
 #incomplete li .buttons{
-    height: inherit;
+    height: 30px;
     width: 65px;
     position: absolute;
-    right:0;
+    right: 0;
     top:0;
 }
 
@@ -174,8 +179,9 @@ body{
 
 #complete ul {
     list-style-type: none;
+    position: relative;
 }
-#complete ul:empty{
+#complete ul:empty {
     margin: 0;
 }
 #complete:not(:empty){
@@ -194,11 +200,15 @@ body{
     background-color: white;
     border-radius: 10px;
     margin-bottom: 5px;
-    height: 30px;
+    min-height: 30px;
+    width: 100%;
     line-height: 30px;
     padding-left: 10px;
     font-size: 1rem;
     position: relative;
+    text-align: left;
+    padding-right: 65px;
+    word-break: break-word;
 }
 
 #complete li:last-child {
@@ -206,7 +216,7 @@ body{
 }
 
 #complete li .buttons {
-    height: inherit;
+    height: 30px;
     width: 65px;
     position: absolute;
     right: 0;
@@ -226,13 +236,13 @@ body{
     cursor: pointer;
 }
 #complete li .buttons button:last-of-type::before {
-    content: '';
-    width: 1px;
-    height: 20px;
-    background-color: rgba(66, 66, 66, 0.5);
-    position: absolute;
-    top: 5px;
-    left: 32px;
+        content: '';
+        width: 1px;
+        height: 20px;
+        background-color: rgba(66, 66, 66, 0.5);
+        position: absolute;
+        top: 5px;
+        left: 32px;
 }
 #complete li .buttons button svg {
     width: 20px;
@@ -260,7 +270,7 @@ body{
 }
 /* Responsivenes */
 
-@media(max-width:855px){
+@media(max-width:865px){
     .timecontainer, .content {
         display: block;
         position: unset;
@@ -278,10 +288,11 @@ body{
     #time{
         font-size: 4rem;
     }
-    ul#complete:not(:empty)::before {
+    #complete ul:not(:empty)::before {
        margin: -5px 0 0 -75px;
     }
 }
+
 @media(max-width:427px){
     #time{
         font-size: 3rem;
