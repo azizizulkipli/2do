@@ -190,7 +190,7 @@ body{
     margin: 0;
 }
 #complete ul:empty::after {
-    content: "There's nothing to complete";
+    content: "There's nothing to complete.";
     font-weight: 600;
     font-family: 'Open Sans', sans-serif;
 }
