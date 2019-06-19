@@ -75,6 +75,74 @@ body{
     top:0;
     left: 0;
 }
+/* POP UP CSS */
+
+.popup{
+    height: auto;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(50, 50, 50, 0.3);
+}
+.popup__close{
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+.popup__close svg {
+    height: 1rem;
+    width: 1rem;
+}
+.popup__title{
+    color: black;
+    position: absolute;
+    left: 2rem;
+    top: 1rem;
+    font-family: 'Open Sans','Quicksand',sans-serif;
+    font-size:1rem;
+}
+.close{
+    display: none;
+}
+.popup__timeformat{
+    display: flex;
+    flex-direction:row; 
+    line-height: 1;
+    margin-top:2rem;
+}
+span#popup__timeformat__text{
+    flex:10;
+    color: black;
+}
+div#popup__timeformat__switch {
+    flex:1;
+    float: right;
+}
+.popup__AmPm {
+    display: flex;
+    flex-direction: row;
+    line-height: 1;
+    margin-top: 1rem;
+}
+
+span#popup__AmPm__text {
+    flex: 10;
+    color: black;
+}
+
+div#popup__AmPm__switch {
+    flex: 1;
+    float: right;
+}
+/* To Do list CSS */
 #todo{
     background-color:none;
     border-radius: 10px;

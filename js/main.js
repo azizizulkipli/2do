@@ -19,8 +19,9 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 };
 
 //TO DO: make a switch for this
-var AmPmPreference=true;
-var time12hrFormat=true;
+var AmPmPreference=(localStorage.getItem('AmPmPreference'))?localStorage.getItem('AmPmPreference'):false;
+var time12hrFormat = (localStorage.getItem('time12hrFormat')) ? localStorage.getItem('time12hrFormat') : false;;
+
 
 //set the time
 function setTime(){
