@@ -6,7 +6,13 @@ const time=document.getElementById('time'),
     task= document.getElementById('task'),
     addBtn = document.getElementById('addtask'),
     removeBtn = document.getElementsByClassName('remove')[0],
-    doneBtn = document.getElementsByClassName('done')[0];
+    doneBtn = document.getElementsByClassName('done')[0],
+    timeformatswitch = document.getElementById('popup__timeformat__switch'),
+    ampmswitch = document.getElementById('popup__AmPm__switch'),
+    settingsBtn= document.getElementById('settings'),
+    amPmBox=document.getElementById('amPmBox'),
+    modal=document.getElementById('modal'),
+    closeBtn=document.getElementById('closeBtn');
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -20,7 +26,7 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 
 //TO DO: make a switch for this
 var AmPmPreference=(localStorage.getItem('AmPmPreference'))?localStorage.getItem('AmPmPreference'):false;
-var time12hrFormat = (localStorage.getItem('time12hrFormat')) ? localStorage.getItem('time12hrFormat') : false;;
+var time12hrFormat = (localStorage.getItem('time12hrFormat')) ? localStorage.getItem('time12hrFormat') : false;
 
 
 //set the time
@@ -100,16 +106,6 @@ function getName() {
     }
 }
 
-// //get goal of the user
-// function getGoal() {
-//     let storagegoal = localStorage.getItem('goal');
-//     if (storagegoal===null) {
-//         goal.textContent = '[Enter Goal]';
-//     } else {
-//         goal.textContent = storagegoal;
-//     }
-// }
-//set name of user on change
 function setName(e){
     if(e.type==='keypress'){
         //enter is pressed
@@ -122,17 +118,6 @@ function setName(e){
     }
 }
 
-// //set goal of user on change
-// function setGoal(e) {
-//     if (e.type === 'keypress') {
-//         //enter is pressed
-//         if (e.which == 13 || e.keyCode == 13) {
-//             localStorage.setItem('goal', e.target.innerText);
-//         }
-//     } else {
-//         localStorage.setItem('goal', e.target.innerText);
-//     }
-// }
 
 // document,addEventListener()
 //add event listener for changes in editable content
@@ -245,6 +230,40 @@ function completeItem() {
     parent.removeChild(item);
     target.insertBefore(item, target.childNodes[0]);
 }
+
+//Settings
+function switchTimeFormat(){
+    time12hrFormat=time12hrFormat?false:true;
+    timeVariablesUpdated();
+    setTime();
+    amPmBox.classList.toggle('close');
+    amPmBox.classList.toggle('flex');
+}
+function switchAmPm(){
+    AmPmPreference = AmPmPreference ? false : true;
+    timeVariablesUpdated();
+    setTime();
+}
+function timeVariablesUpdated(){
+    localStorage.setItem('AmPmPreference',AmPmPreference);
+    localStorage.setItem('time12hrFormat', time12hrFormat);
+}
+
+timeformatswitch.addEventListener('click',switchTimeFormat);
+
+ampmswitch.addEventListener('click',switchAmPm);
+
+settingsBtn.addEventListener('click',function(){
+    modal.classList.toggle('close');
+});
+
+closeBtn.addEventListener('click', function () {
+    modal.classList.toggle('close');
+});
+
+
+
+
 
 //calls
 setTime();

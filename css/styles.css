@@ -64,7 +64,7 @@ body{
     animation: swoosh 0.3s ease;
 }
 @keyframes swoosh{
-  0%   {transform: rotate(90deg);}
+  0%   {transform: rotate(0deg);}
   100%  {transform: rotate(180deg);}
 }
 
@@ -111,6 +111,11 @@ body{
 }
 .close{
     display: none;
+    transition: display 0.3s ease-in;
+}
+.flex{
+    display: flex;
+    transition: display 0.3s ease-in;
 }
 .popup__timeformat{
     display: flex;
@@ -127,7 +132,6 @@ div#popup__timeformat__switch {
     float: right;
 }
 .popup__AmPm {
-    display: flex;
     flex-direction: row;
     line-height: 1;
     margin-top: 1rem;
