@@ -20,6 +20,7 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 
 //TO DO: make a switch for this
 var AmPmPreference=true;
+var time12hrFormat=true;
 
 //set the time
 function setTime(){
@@ -29,7 +30,9 @@ function setTime(){
         seconds=today.getSeconds();
     
     const amPm = hours >= 12? 'PM' : 'AM';
-    hours = hours > 12 ? hours % 12 : hours==0?hours=12:hours;
+    if(time12hrFormat){
+        hours = hours > 12 ? hours % 12 : hours == 0 ? hours = 12 : hours;
+    }
     time.innerHTML = `${hours}<span>:</span>${correctTime(minutes)}<span>:</span>${correctTime(seconds)} <span>${setAmPm(amPm)}</span>`;
     setTimeout(setTime,1000);
 }
