@@ -27,6 +27,8 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 //TO DO: make a switch for this
 var AmPmPreference=(localStorage.getItem('AmPmPreference'))?localStorage.getItem('AmPmPreference'):false;
 var time12hrFormat = (localStorage.getItem('time12hrFormat')) ? localStorage.getItem('time12hrFormat') : false;
+console.log(AmPmPreference);
+console.log(time12hrFormat);
 
 
 //set the time
@@ -37,11 +39,17 @@ function setTime(){
         seconds=today.getSeconds();
     
     const amPm = hours >= 12? 'PM' : 'AM';
-    if(time12hrFormat){
-        hours = hours > 12 ? hours % 12 : hours == 0 ? hours = 12 : hours;
-    }
-    time.innerHTML = `${hours}<span>:</span>${correctTime(minutes)}<span>:</span>${correctTime(seconds)} <span>${setAmPm(amPm)}</span>`;
+    time.innerHTML = `${correctHours(hours)}<span>:</span>${correctTime(minutes)}<span>:</span>${correctTime(seconds)} <span>${setAmPm(amPm)}</span>`;
     setTimeout(setTime,1000);
+}
+function correctHours(n){
+    if (time12hrFormat) {
+        hours = n > 12 ? n % 12 : n == 0 ? n = 12 : n;
+        return hours;
+    }
+    else{
+        return n;
+    }
 }
 //correct 0-9seconds and minutes
 function correctTime(n){
@@ -49,7 +57,10 @@ function correctTime(n){
 }
 //user preference of AM/PM
 function setAmPm(n){
-    return AmPmPreference? n : '';
+    if(time12hrFormat && AmPmPreference)
+    return n;
+    else
+    return '';
 }
 //set the date
 function setDate(){
