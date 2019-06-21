@@ -25,10 +25,8 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 };
 
 //TO DO: make a switch for this
-var AmPmPreference=(localStorage.getItem('AmPmPreference'))?localStorage.getItem('AmPmPreference'):false;
-var time12hrFormat = (localStorage.getItem('time12hrFormat')) ? localStorage.getItem('time12hrFormat') : false;
-console.log(AmPmPreference);
-console.log(time12hrFormat);
+var AmPmPreference=(localStorage.getItem('AmPmPreference'))?localStorage.getItem('AmPmPreference'):'false';
+var time12hrFormat = (localStorage.getItem('time12hrFormat')) ? localStorage.getItem('time12hrFormat') : 'false';
 
 
 //set the time
@@ -43,7 +41,7 @@ function setTime(){
     setTimeout(setTime,1000);
 }
 function correctHours(n){
-    if (time12hrFormat) {
+    if (time12hrFormat=='true') {
         hours = n > 12 ? n % 12 : n == 0 ? n = 12 : n;
         return hours;
     }
@@ -57,7 +55,7 @@ function correctTime(n){
 }
 //user preference of AM/PM
 function setAmPm(n){
-    if(time12hrFormat && AmPmPreference)
+    if(time12hrFormat=='true' && AmPmPreference=='true')
     return n;
     else
     return '';
@@ -244,14 +242,14 @@ function completeItem() {
 
 //Settings
 function switchTimeFormat(){
-    time12hrFormat=time12hrFormat?false:true;
+    time12hrFormat=(time12hrFormat=='true')?'false':'true';
     timeVariablesUpdated();
     setTime();
     amPmBox.classList.toggle('close');
     amPmBox.classList.toggle('flex');
 }
 function switchAmPm(){
-    AmPmPreference = AmPmPreference ? false : true;
+    AmPmPreference = (AmPmPreference=='true') ? 'false' : 'true';
     timeVariablesUpdated();
     setTime();
 }
