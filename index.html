@@ -45,7 +45,7 @@
             </g>
         </svg>
     </button>
-    <div id="modal" class="popup close">
+    <div id="modal" class="popup">
         <span class="popup__title">Settings</span>
         <span class="popup__close" id='closeBtn'>
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -60,11 +60,17 @@
 
         </span>
         <div class="popup__timeformat">
-            <!-- id="popup__timeformat__switch" -->
+            <label class="switch" id="popup__timeformat__switch">
+                <input type="checkbox" id="popup__timeformat__checkbox">
+                <span class="slider round"></span>
+            </label>
             <span id="popup__timeformat__text">Switch to 12-hour format?</span>
         </div>
-        <div class="popup__AmPm close" id="amPmBox">
-            <!-- id="popup__AmPm__switch" -->
+        <div class="popup__AmPm" id="amPmBox">
+            <label class="switch" id="popup__AmPm__switch">
+                <input type="checkbox" id="popup__AmPm__checkbox">
+                <span class="slider round"></span>
+            </label>
             <span id="popup__timeformat__text">Show 'AM' and 'PM'?</span>
         </div>
     </div>

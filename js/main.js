@@ -128,12 +128,9 @@ function setName(e){
 }
 
 
-// document,addEventListener()
 //add event listener for changes in editable content
 name.addEventListener('keypress',setName);
 name.addEventListener('blur', setName);
-// goal.addEventListener('keypress', setGoal);
-// goal.addEventListener('blur', setGoal);
 
 
 //Implemented TO-DO List
@@ -241,8 +238,19 @@ function completeItem() {
 }
 
 //Settings
+function onInit(){
+    //Initialize Settings Checkboxes
+    (time12hrFormat == 'true') ? document.getElementById('popup__timeformat__checkbox').checked = true : document.getElementById('popup__timeformat__checkbox').checked = false;
+    (AmPmPreference == 'true') ? document.getElementById('popup__AmPm__checkbox').checked = true : document.getElementById('popup__AmPm__checkbox').checked = false;
+    if (time12hrFormat == 'true' && AmPmPreference == 'true'){
+        amPmBox.classList.add('flex');
+    }
+    else
+        amPmBox.classList.add('close');
+}
 function switchTimeFormat(){
     time12hrFormat=(time12hrFormat=='true')?'false':'true';
+    (time12hrFormat == 'true') ? document.getElementById('popup__timeformat__checkbox').checked = true : document.getElementById('popup__timeformat__checkbox').checked = false;
     timeVariablesUpdated();
     setTime();
     amPmBox.classList.toggle('close');
@@ -250,6 +258,7 @@ function switchTimeFormat(){
 }
 function switchAmPm(){
     AmPmPreference = (AmPmPreference=='true') ? 'false' : 'true';
+    (AmPmPreference == 'true') ? document.getElementById('popup__AmPm__checkbox').checked = true : document.getElementById('popup__AmPm__checkbox').checked = false;
     timeVariablesUpdated();
     setTime();
 }
@@ -263,11 +272,11 @@ timeformatswitch.addEventListener('click',switchTimeFormat);
 ampmswitch.addEventListener('click',switchAmPm);
 
 settingsBtn.addEventListener('click',function(){
-    modal.classList.toggle('close');
+    modal.classList.toggle('inview');
 });
 
 closeBtn.addEventListener('click', function () {
-    modal.classList.toggle('close');
+    modal.classList.toggle('inview');
 });
 
 
@@ -279,5 +288,5 @@ setTime();
 setDate();
 setBgGreet();
 getName();
-// getGoal();
+onInit();
 renderTodoList();
