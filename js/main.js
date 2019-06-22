@@ -273,6 +273,7 @@ ampmswitch.addEventListener('click',switchAmPm);
 
 settingsBtn.addEventListener('click',function(){
     modal.classList.toggle('inview');
+    settingsBtn.blur();
 });
 
 closeBtn.addEventListener('click', function () {
