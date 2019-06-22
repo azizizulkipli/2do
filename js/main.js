@@ -6,7 +6,13 @@ const time=document.getElementById('time'),
     task= document.getElementById('task'),
     addBtn = document.getElementById('addtask'),
     removeBtn = document.getElementsByClassName('remove')[0],
-    doneBtn = document.getElementsByClassName('done')[0];
+    doneBtn = document.getElementsByClassName('done')[0],
+    timeformatswitch = document.getElementById('popup__timeformat__switch'),
+    ampmswitch = document.getElementById('popup__AmPm__switch'),
+    settingsBtn= document.getElementById('settings'),
+    amPmBox=document.getElementById('amPmBox'),
+    modal=document.getElementById('modal'),
+    closeBtn=document.getElementById('closeBtn');
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -19,7 +25,9 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 };
 
 //TO DO: make a switch for this
-var AmPmPreference=true;
+var AmPmPreference=(localStorage.getItem('AmPmPreference'))?localStorage.getItem('AmPmPreference'):'false';
+var time12hrFormat = (localStorage.getItem('time12hrFormat')) ? localStorage.getItem('time12hrFormat') : 'false';
+
 
 //set the time
 function setTime(){
@@ -29,9 +37,17 @@ function setTime(){
         seconds=today.getSeconds();
     
     const amPm = hours >= 12? 'PM' : 'AM';
-    hours = hours > 12 ? hours % 12 : hours==0?hours=12:hours;
-    time.innerHTML = `${hours}<span>:</span>${correctTime(minutes)}<span>:</span>${correctTime(seconds)} <span>${setAmPm(amPm)}</span>`;
+    time.innerHTML = `${correctHours(hours)}<span>:</span>${correctTime(minutes)}<span>:</span>${correctTime(seconds)} <span>${setAmPm(amPm)}</span>`;
     setTimeout(setTime,1000);
+}
+function correctHours(n){
+    if (time12hrFormat=='true') {
+        hours = n > 12 ? n % 12 : n == 0 ? n = 12 : n;
+        return hours;
+    }
+    else{
+        return n;
+    }
 }
 //correct 0-9seconds and minutes
 function correctTime(n){
@@ -39,7 +55,10 @@ function correctTime(n){
 }
 //user preference of AM/PM
 function setAmPm(n){
-    return AmPmPreference? n : '';
+    if(time12hrFormat=='true' && AmPmPreference=='true')
+    return n;
+    else
+    return '';
 }
 //set the date
 function setDate(){
@@ -96,16 +115,6 @@ function getName() {
     }
 }
 
-// //get goal of the user
-// function getGoal() {
-//     let storagegoal = localStorage.getItem('goal');
-//     if (storagegoal===null) {
-//         goal.textContent = '[Enter Goal]';
-//     } else {
-//         goal.textContent = storagegoal;
-//     }
-// }
-//set name of user on change
 function setName(e){
     if(e.type==='keypress'){
         //enter is pressed
@@ -118,24 +127,10 @@ function setName(e){
     }
 }
 
-// //set goal of user on change
-// function setGoal(e) {
-//     if (e.type === 'keypress') {
-//         //enter is pressed
-//         if (e.which == 13 || e.keyCode == 13) {
-//             localStorage.setItem('goal', e.target.innerText);
-//         }
-//     } else {
-//         localStorage.setItem('goal', e.target.innerText);
-//     }
-// }
 
-// document,addEventListener()
 //add event listener for changes in editable content
 name.addEventListener('keypress',setName);
 name.addEventListener('blur', setName);
-// goal.addEventListener('keypress', setGoal);
-// goal.addEventListener('blur', setGoal);
 
 
 //Implemented TO-DO List
@@ -242,10 +237,56 @@ function completeItem() {
     target.insertBefore(item, target.childNodes[0]);
 }
 
+//Settings
+function onInit(){
+    //Initialize Settings Checkboxes
+    (time12hrFormat == 'true') ? document.getElementById('popup__timeformat__checkbox').checked = true : document.getElementById('popup__timeformat__checkbox').checked = false;
+    (AmPmPreference == 'true') ? document.getElementById('popup__AmPm__checkbox').checked = true : document.getElementById('popup__AmPm__checkbox').checked = false;
+    if (time12hrFormat == 'true' && AmPmPreference == 'true'){
+        amPmBox.classList.add('flex');
+    }
+    else
+        amPmBox.classList.add('close');
+}
+function switchTimeFormat(){
+    time12hrFormat=(time12hrFormat=='true')?'false':'true';
+    (time12hrFormat == 'true') ? document.getElementById('popup__timeformat__checkbox').checked = true : document.getElementById('popup__timeformat__checkbox').checked = false;
+    timeVariablesUpdated();
+    setTime();
+    amPmBox.classList.toggle('close');
+    amPmBox.classList.toggle('flex');
+}
+function switchAmPm(){
+    AmPmPreference = (AmPmPreference=='true') ? 'false' : 'true';
+    (AmPmPreference == 'true') ? document.getElementById('popup__AmPm__checkbox').checked = true : document.getElementById('popup__AmPm__checkbox').checked = false;
+    timeVariablesUpdated();
+    setTime();
+}
+function timeVariablesUpdated(){
+    localStorage.setItem('AmPmPreference',AmPmPreference);
+    localStorage.setItem('time12hrFormat', time12hrFormat);
+}
+
+timeformatswitch.addEventListener('click',switchTimeFormat);
+
+ampmswitch.addEventListener('click',switchAmPm);
+
+settingsBtn.addEventListener('click',function(){
+    modal.classList.toggle('inview');
+});
+
+closeBtn.addEventListener('click', function () {
+    modal.classList.toggle('inview');
+});
+
+
+
+
+
 //calls
 setTime();
 setDate();
 setBgGreet();
 getName();
-// getGoal();
+onInit();
 renderTodoList();

@@ -10,6 +10,7 @@ body{
     height: 100vh;
     text-align: center;
     background-size: cover;
+    background: no-repeat center center fixed;
 }
 .timecontainer, .content{
     display: flex;
@@ -44,6 +45,113 @@ body{
     font-size: 1.5rem;
     width: inherit;
 }
+#settings{
+    height: 1.7rem;
+    width: 1.7rem;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 0.3rem;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 4vw;
+    right: 4vw;
+    cursor: pointer;
+}
+#settings svg:hover{
+    animation: swoosh 0.3s ease;
+}
+@keyframes swoosh{
+  0%   {transform: rotate(0deg);}
+  100%  {transform: rotate(180deg);}
+}
+
+#settings svg{
+    height: 1.7rem;
+    width: 1.7rem;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+/* POP UP CSS */
+
+.popup{
+    height: auto;
+    min-width: 20rem;
+    position: absolute;
+    left: 50%;
+    top: -50vh;
+    margin: 0 -10rem 0 -10rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(50, 50, 50, 0.3);
+    transition: top 0.3s ease;
+}
+.inview{
+    top: 4vh;
+    transition: top 0.3s ease;
+}
+.popup__close{
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+.popup__close svg {
+    height: 1rem;
+    width: 1rem;
+}
+.popup__title{
+    color: black;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    font-family: 'Open Sans','Quicksand',sans-serif;
+    font-size:1rem;
+}
+.close{
+    display: none;
+    transition: 0.3s ease-in;
+}
+.flex{
+    display: flex;
+    transition: 0.3s ease-in;
+}
+.popup__timeformat{
+    display: flex;
+    flex-direction:row; 
+    line-height: 1;
+    margin-top:2rem;
+}
+span#popup__timeformat__text,
+span#popup__AmPm__text {
+    flex:10;
+    color: black;
+    text-align: left;
+    text-indent: 1rem;
+}
+#popup__timeformat__switch {
+    flex:1;
+    float: right;
+}
+.popup__AmPm {
+    flex-direction: row;
+    line-height: 1;
+    margin-top: 1rem;
+}
+
+
+#popup__AmPm__switch {
+    flex: 1;
+    float: right;
+}
+/* To Do list CSS */
 #todo{
     background-color:none;
     border-radius: 10px;
@@ -79,6 +187,7 @@ body{
     color: #fff;
     font-size: 1rem;
     cursor: pointer;
+    padding: .3rem;
 }
 .filldone{
     fill: rgba(0, 108, 255, 1);
@@ -100,7 +209,7 @@ body{
     margin: 0 0 10px 0;
 }
 #incomplete ul:empty::after{
-    content: 'You have nothing to do!';
+    content: 'Nothing to do!';
     font-weight: 600;
     font-family: 'Open Sans',sans-serif;
 }
@@ -190,7 +299,7 @@ body{
     margin: 0;
 }
 #complete ul:empty::after {
-    content: "You haven't completed anything.";
+    content: "Yet to complete something!";
     font-weight: 600;
     font-family: 'Open Sans', sans-serif;
 }
