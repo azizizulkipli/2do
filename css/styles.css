@@ -3,11 +3,13 @@
     padding: 0;
     margin: 0;
 }
+html,body{
+    height: 90vh;
+}
 body{
     color: white;
     font-family: 'Quicksand',
     sans-serif;
-    height: 100vh;
     text-align: center;
     background-size: cover;
     background: no-repeat center center fixed;
@@ -422,9 +424,6 @@ span#popup__AmPm__text {
     }
 }
 @media(max-width:375px) {
-    #time {
-        font-size: 2rem;
-    }
     #day{
         font-size: 1rem;
     }
