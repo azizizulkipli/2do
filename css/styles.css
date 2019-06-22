@@ -11,6 +11,12 @@ body{
     text-align: center;
     background-size: cover;
 }
+/* Round checkbox */
+
+
+
+
+
 .timecontainer, .content{
     display: flex;
     flex-direction: column;
@@ -123,11 +129,12 @@ body{
     line-height: 1;
     margin-top:2rem;
 }
-span#popup__timeformat__text{
+span#popup__timeformat__text,
+span#popup__AmPm__text {
     flex:10;
     color: black;
 }
-div#popup__timeformat__switch {
+#popup__timeformat__switch {
     flex:1;
     float: right;
 }
@@ -137,12 +144,8 @@ div#popup__timeformat__switch {
     margin-top: 1rem;
 }
 
-span#popup__AmPm__text {
-    flex: 10;
-    color: black;
-}
 
-div#popup__AmPm__switch {
+#popup__AmPm__switch {
     flex: 1;
     float: right;
 }
