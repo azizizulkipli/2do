@@ -3,51 +3,70 @@
     padding: 0;
     margin: 0;
 }
-html,body{
+
+html,
+body {
     height: 90vh;
 }
-body{
+
+body {
     color: white;
     font-family: 'Quicksand',
-    sans-serif;
+        sans-serif;
     text-align: center;
     background-size: cover;
     background: no-repeat center center fixed;
 }
-.timecontainer, .content{
+
+body {
+    @supports (-webkit-appearance:none) {
+        .os-android & {
+            min-height: calc(100vh - 56px);
+        }
+    }
+}
+
+.timecontainer,
+.content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.timecontainer{
+
+.timecontainer {
     position: fixed;
     left: 4vw;
-    bottom:4vw;
+    bottom: 4vw;
 }
-.content{
+
+.content {
     color: rgb(0, 0, 0);
     position: fixed;
-    top:50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     margin: 0 10px;
     max-width: 500px;
 }
-.margins{
+
+.margins {
     margin: 10px;
 }
-#time{
+
+#time {
     font-size: 3rem;
     width: inherit;
 }
-#day{
+
+#day {
     font-size: 1.5rem;
     width: inherit;
 }
-#settings{
+
+#settings {
     height: 2rem;
     width: 2rem;
     appearance: none;
@@ -63,24 +82,32 @@ body{
     right: 4vw;
     cursor: pointer;
 }
-#settings svg:hover{
+
+#settings svg:hover {
     animation: swoosh 0.3s ease;
 }
-@keyframes swoosh{
-  0%   {transform: rotate(0deg);}
-  100%  {transform: rotate(180deg);}
+
+@keyframes swoosh {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
 }
 
-#settings svg{
+#settings svg {
     height: 2rem;
     width: 2rem;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
 }
+
 /* POP UP CSS */
 
-.popup{
+.popup {
     height: auto;
     min-width: 20rem;
     position: absolute;
@@ -93,11 +120,13 @@ body{
     box-shadow: 0 0 10px rgba(50, 50, 50, 0.3);
     transition: top 0.3s ease;
 }
-.inview{
+
+.inview {
     top: 4vh;
     transition: top 0.3s ease;
 }
-.popup__close{
+
+.popup__close {
     height: 1rem;
     width: 1rem;
     position: absolute;
@@ -105,43 +134,51 @@ body{
     right: 1rem;
     cursor: pointer;
 }
+
 .popup__close svg {
     height: 1rem;
     width: 1rem;
 }
-.popup__title{
+
+.popup__title {
     color: black;
     position: absolute;
     left: 1rem;
     top: 1rem;
-    font-family: 'Open Sans','Quicksand',sans-serif;
-    font-size:1rem;
+    font-family: 'Open Sans', 'Quicksand', sans-serif;
+    font-size: 1rem;
 }
-.close{
+
+.close {
     display: none;
     transition: 0.3s ease-in;
 }
-.flex{
+
+.flex {
     display: flex;
     transition: 0.3s ease-in;
 }
-.popup__timeformat{
+
+.popup__timeformat {
     display: flex;
-    flex-direction:row; 
+    flex-direction: row;
     line-height: 1;
-    margin-top:2rem;
+    margin-top: 2rem;
 }
+
 span#popup__timeformat__text,
 span#popup__AmPm__text {
-    flex:10;
+    flex: 10;
     color: black;
     text-align: left;
     text-indent: 1rem;
 }
+
 #popup__timeformat__switch {
-    flex:1;
+    flex: 1;
     float: right;
 }
+
 .popup__AmPm {
     flex-direction: row;
     line-height: 1;
@@ -153,16 +190,18 @@ span#popup__AmPm__text {
     flex: 1;
     float: right;
 }
+
 /* To Do list CSS */
-#todo{
-    background-color:none;
+#todo {
+    background-color: none;
     border-radius: 10px;
     width: calc(100% - 20px);
     display: flex;
     height: 30px;
 }
-#todo input{
-    flex:7;
+
+#todo input {
+    flex: 7;
     background-color: rgba(255, 255, 255, 0.5);
     border: none;
     outline: none;
@@ -170,17 +209,19 @@ span#popup__AmPm__text {
     text-indent: 15px;
     border-radius: 10px;
     color: black;
-    font-family: 'Quicksand',sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 1rem;
 }
-#todo input::placeholder{
+
+#todo input::placeholder {
     color: black;
-    font-family: 'Quicksand',sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
-#todo button{
-    flex:1;
+
+#todo button {
+    flex: 1;
     margin-left: 10px;
-    height:30px;
+    height: 30px;
     border: none;
     outline: none;
     box-shadow: none;
@@ -191,31 +232,38 @@ span#popup__AmPm__text {
     cursor: pointer;
     padding: .3rem;
 }
-.filldone{
+
+.filldone {
     fill: rgba(0, 108, 255, 1);
     transition: 0.2s fill ease;
 }
+
 .fillremove {
     fill: #c0cecb;
     transition: 0.2s fill ease;
 }
+
 /* Incomplete List Boxes */
 
-#incomplete{
+#incomplete {
     width: calc(100% - 20px);
 }
-#incomplete ul{
+
+#incomplete ul {
     list-style-type: none;
 }
+
 #incomplete ul:empty {
     margin: 0 0 10px 0;
 }
-#incomplete ul:empty::after{
+
+#incomplete ul:empty::after {
     content: 'Nothing to do!';
     font-weight: 600;
-    font-family: 'Open Sans',sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
-#incomplete ul li{
+
+#incomplete ul li {
     background-color: white;
     border-radius: 10px;
     margin-bottom: 5px;
@@ -229,18 +277,20 @@ span#popup__AmPm__text {
     padding-right: 65px;
     word-break: break-word;
 }
-#incomplete li:last-child{
+
+#incomplete li:last-child {
     margin-bottom: 10px;
 }
-#incomplete li .buttons{
+
+#incomplete li .buttons {
     height: 30px;
     width: 65px;
     position: absolute;
     right: 0;
-    top:0;
+    top: 0;
 }
 
-#incomplete li .buttons button{
+#incomplete li .buttons button {
     height: inherit;
     width: 30px;
     appearance: none;
@@ -253,16 +303,18 @@ span#popup__AmPm__text {
     position: relative;
     cursor: pointer;
 }
+
 #incomplete li .buttons button:last-of-type::before {
     content: '';
-    width:1px;
+    width: 1px;
     height: 20px;
     background-color: rgba(66, 66, 66, 0.5);
     position: absolute;
-    top:5px;
-    left:-3px;
+    top: 5px;
+    left: -3px;
 }
-#incomplete li .buttons button svg{
+
+#incomplete li .buttons button svg {
     width: 20px;
     height: 20px;
     position: absolute;
@@ -270,19 +322,24 @@ span#popup__AmPm__text {
     left: 50%;
     margin: -10px 0 0 -10px;
 }
+
 #incomplete li .buttons button.remove svg:hover .fillremove {
-    fill:#e85656;
+    fill: #e85656;
 }
-#incomplete li .buttons button.done svg{
+
+#incomplete li .buttons button.done svg {
     border-radius: 10px;
     border: 1.5px solid rgba(0, 108, 255, 1);
 }
-#incomplete li .buttons button.done:hover svg .filldone{
+
+#incomplete li .buttons button.done:hover svg .filldone {
     fill: #fff;
 }
-#incomplete li .buttons button.done svg{
+
+#incomplete li .buttons button.done svg {
     background-color: none;
 }
+
 #incomplete li .buttons button.done:hover svg {
     background-color: rgba(0, 108, 255, 1);
 }
@@ -297,18 +354,22 @@ span#popup__AmPm__text {
     list-style-type: none;
     position: relative;
 }
+
 #complete ul:empty {
     margin: 0;
 }
+
 #complete ul:empty::after {
     content: "Yet to complete something!";
     font-weight: 600;
     font-family: 'Open Sans', sans-serif;
 }
-#complete:not(:empty){
+
+#complete:not(:empty) {
     opacity: 0.7;
 }
-#complete ul::before{
+
+#complete ul::before {
     content: '';
     width: 150px;
     height: 1px;
@@ -342,7 +403,7 @@ span#popup__AmPm__text {
     width: 65px;
     position: absolute;
     right: 0;
-    top:0;
+    top: 0;
 }
 
 #complete li .buttons button {
@@ -357,15 +418,17 @@ span#popup__AmPm__text {
     background: none;
     cursor: pointer;
 }
+
 #complete li .buttons button:last-of-type::before {
-        content: '';
-        width: 1px;
-        height: 20px;
-        background-color: rgba(66, 66, 66, 0.5);
-        position: absolute;
-        top: 5px;
-        left: 32px;
+    content: '';
+    width: 1px;
+    height: 20px;
+    background-color: rgba(66, 66, 66, 0.5);
+    position: absolute;
+    top: 5px;
+    left: 32px;
 }
+
 #complete li .buttons button svg {
     width: 20px;
     height: 20px;
@@ -390,43 +453,53 @@ span#popup__AmPm__text {
 #complete li .buttons button.done svg {
     background: rgba(0, 108, 255, 1);
 }
+
 /* Responsivenes */
 
-@media(max-width:865px){
-    .timecontainer, .content {
+@media(max-width:865px) {
+
+    .timecontainer,
+    .content {
         display: block;
         position: unset;
         transform: none;
     }
-    .timecontainer{
+
+    .timecontainer {
         margin-bottom: 10px;
     }
-    body{
-        display:flex;
-        flex-direction: column; 
+
+    body {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    #time{
+
+    #time {
         font-size: 4rem;
     }
+
     #complete ul::before {
-       margin: -5px 0 0 -75px;
+        margin: -5px 0 0 -75px;
     }
 }
 
-@media(max-width:427px){
-    #time{
+@media(max-width:427px) {
+    #time {
         font-size: 3rem;
     }
-    .margins{
+
+    .margins {
         font-size: 1.3rem;
     }
 }
+
 @media(max-width:375px) {
-    #day{
+    #day {
         font-size: 1rem;
     }
+
     .margins {
         font-size: 1rem;
     }
